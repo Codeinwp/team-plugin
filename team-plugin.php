@@ -10,8 +10,6 @@ Text Domain: team-plugin
 */
 
 
-
-add_action( 'init', 'team_members_custom_post_type', 0 );
 /**
  *  Custom Post Type: Team Member
  */
@@ -54,61 +52,61 @@ function team_members_custom_post_type() {
     register_post_type( 'team-member', $args );
 
     flush_rewrite_rules();
+
+    //add thumbnail size for team members.
+    add_image_size( 'team-member-custom-thumbnail', 200, 200, true );
 }
 
+add_action( 'init', 'team_members_custom_post_type', 0 );
 
-add_action( 'init', 'team_members_categories', 0 );
+
 /**
- *  Taxonomy: Team Member Categories
+ *  Custom Post Type Metaboxes
  */
-function team_members_categories() {
-    $labels = array(
-        'name'              => _x( 'Team Members Categories', 'taxonomy general name', 'team-plugin' ),
-        'singular_name'     => _x( 'Team Members Category', 'taxonomy singular name', 'team-plugin' ),
-        'search_items'      => __( 'Search Team Members Categories', 'team-plugin' ),
-        'all_items'         => __( 'All Team Members Categories', 'team-plugin' ),
-        'parent_item'       => __( 'Parent Team Members Category', 'team-plugin' ),
-        'parent_item_colon' => __( 'Parent Team Members Category:', 'team-plugin' ),
-        'edit_item'         => __( 'Edit Team Members Category', 'team-plugin' ),
-        'update_item'       => __( 'Update Team Members Category', 'team-plugin' ),
-        'add_new_item'      => __( 'Add New Team Members Category', 'team-plugin' ),
-        'new_item_name'     => __( 'New Team Members Category', 'team-plugin' ),
-        'menu_name'         => __( 'Team Members Categories', 'team-plugin' ),
-        'rewrite' => array('slug' => 'team-member-categories', 'with_front' => true),
-    );
-    $args = array(
-        'labels'              => $labels,
-        'hierarchical'        => true,
-        'public'              => true,
-        'show_ui'             => true,
-        'exclude_from_search' => false,
-        'show_admin_column'   => true,
-        'query_var'           => true,
-        'rewrite'             => false
-    );
-    register_taxonomy( 'team-member-categories', 'lawyers', $args );
+function add_team_members_metaboxes() {
+  add_meta_box(
+          'my-meta-box',
+          __( 'My Meta Box' ),
+          'render_my_meta_box',
+          'team-member',
+          'normal',
+          'default'
+      );
 }
+add_action( 'add_meta_boxes', 'add_team_members_metaboxes' );
 
 
-// Shortcode Script
+/**
+ *  Check for single template. Fallback to default single.php
+ */
+function get_custom_post_type_template($single_template) {
+     global $post;
+
+     if ($post->post_type == 'team-member') {
+
+     if ( $plugin_template = locate_template( '/single-team-member.php' ) ) {
+          $single_template = $plugin_template;
+        } else {
+          $single_template = locate_template( '/single.php' );
+        }
+     }
+     return $single_template;
+}
+add_filter( 'single_template', 'get_custom_post_type_template' );
+
+
+/**
+ *  Create Shortcode For Section Output
+ */
 function team_section_creation() {
 
-$query = new WP_Query( array( 'post_type' => 'team-member', ) );
+  if ( $overridden_template = locate_template( '/content-team-template.php' ) ) {
+    load_template( $overridden_template );
+  } else {
+    load_template( dirname( __FILE__ ) . '/template-parts/content-team-template.php' );
+  }
 
-if ( $query->have_posts() ) : ?>
-	<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-		<div class="entry">
-			<h2 class="title"><?php the_title(); ?></h2>
-			<?php the_content(); ?>
-		</div>
-	<?php endwhile; wp_reset_postdata(); ?>
-	<!-- show pagination here -->
-<?php else : ?>
-	<!-- show 404 error here -->
-<?php endif; ?>
-<h1>SHORTCODE</h1>
-
-<?php
 }
 add_shortcode('team', 'team_section_creation');
+
 ?>
