@@ -99,79 +99,82 @@ add_shortcode('team', 'team_plugin_section_shortcode');
  *  Create and add custom metabox.
  */
 function team_plugin_add_custom_metabox() {
- global $meta_box;
-  // Add custom metabox.
-  $prefix = 'team_plugin_';
+  global $meta_box;
 
-  $meta_box = array(
-      'id' => 'team-member-properties-meta-box',
-      'title' => __('Team Member Properties', 'team-plugin'),
-      'page' => 'team-member',
-      'context' => 'normal',
-      'priority' => 'high',
-      'fields' => array(
-          array(
-              'id' => $prefix . 'facebook_link',
-              'name' => 'Facebook Link',
-              'description' => 'Add a Facebook link for this team member',
-              'type' => 'text',
-              'std' => '#'
-          ),
-      )
-  );
-
-  add_meta_box($meta_box['id'], $meta_box['title'], 'team_plugin_render_custom_metabox', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
-
+  $meta_box = array (
+    'field_id'      => 'team-member-properties-meta-box',
+    'title'   => __('Team Member Properties', 'team-plugin'),
+    'page'    => 'team-member',
+    'context' => 'normal',
+    'priority'=> 'high',
+    'fields'  => array(
+                        array(
+                        'field_id'          => '_team_plugin_facebook_link',
+                        'field_name'        => __('Facebook Link', 'team-plugin'),
+                        'field_description' => __('Add a Facebook link for this team member'),
+                        'field_type'        => 'text',
+                        'field_placeholder' => esc_url('http://facebook.com'),
+                      ),
+                        array(
+                        'field_id'          => '_c_link',
+                        'field_name'        => __('Facebook Link', 'team-plugin'),
+                        'field_description' => __('Add a Facebook link for this team member'),
+                        'field_type'        => 'text',
+                        'field_placeholder' => esc_url('http://lager.com'),
+                      ),
+                 )
+            );
+      add_meta_box( $meta_box['field_id'], $meta_box['title'], 'team_plugin_render_custom_metabox', $meta_box['page'], $meta_box['context'], $meta_box['priority'] );
 }
 add_action('add_meta_boxes_team-member', 'team_plugin_add_custom_metabox');
+
 
 
 /**
  *  Render metabox.
  */
-function team_plugin_render_custom_metabox($post) {
-   global $meta_box;
+function team_plugin_render_custom_metabox() {
+  global $meta_box, $post;
 
-   // Use nonce for verification
-   echo '<input type="hidden" name="team_plugin_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+  // Use nonce for verification
+  echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
-   echo '<table class="form-table">';
+  echo '<table class="form-table">';
 
-   foreach ($meta_box['fields'] as $field) {
-      //  get current post meta data
-       $meta = get_post_meta($post->ID, $field['id'], true);
+  foreach ($meta_box['fields'] as $field) {
+      // get current post meta data
+      $meta = get_post_meta($post->ID, $field['field_id'], true);
 
-       echo '<tr>',
-               '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
-               '<td>';
-       switch ($field['type']) {
-           case 'text':
-               echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['description'];
-               break;
-           case 'textarea':
-               echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>', '<br />', $field['description'];
-               break;
-           case 'select':
-               echo '<select name="', $field['id'], '" id="', $field['id'], '">';
-               foreach ($field['options'] as $option) {
-                   echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
-               }
-               echo '</select>';
-               break;
-           case 'radio':
-               foreach ($field['options'] as $option) {
-                   echo '<input type="radio" name="', $field['id'], '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
-               }
-               break;
-           case 'checkbox':
-               echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
-               break;
-       }
-       echo     '</td><td>',
-           '</td></tr>';
-   }
-
-   echo '</table>';
+      echo '<tr>',
+              '<th style="width:20%"><label for="', $field['field_id'], '">', $field['name'], '</label></th>',
+              '<td>';
+      switch ($field['field_type']) {
+          case 'text':
+              echo '<input type="text" name="', $field['field_id'], '" id="', $field['field_id'], '" value="', $meta, '" size="30" style="width:97%" />', '<br />', $field['desc'];
+              break;
+          case 'textarea':
+              echo '<textarea name="', $field['field_id'], '" id="', $field['field_id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['field_placeholder'], '</textarea>', '<br />', $field['desc'];
+              break;
+          case 'select':
+              echo '<select name="', $field['field_id'], '" id="', $field['field_id'], '">';
+              foreach ($field['options'] as $option) {
+                  echo '<option ', $meta == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+              }
+              echo '</select>';
+              break;
+          case 'radio':
+              foreach ($field['options'] as $option) {
+                  echo '<input type="radio" name="', $field['field_id'], '" value="', $option['value'], '"', $meta == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
+              }
+              break;
+          case 'checkbox':
+              echo '<input type="checkbox" name="', $field['field_id'], '" id="', $field['field_id'], '"', $meta ? ' checked="checked"' : '', ' />';
+              break;
+      }
+      echo     '</td><td>',
+          '</td></tr>';
+  }
+  echo '</table>';
 }
 
 
@@ -179,41 +182,41 @@ function team_plugin_render_custom_metabox($post) {
  *  Save metaboxes data.
  */
 function team_plugin_save_data($post_id) {
-  // global $meta_box;
-  //
-  // // verify nonce
-  // if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
-  //     return $post_id;
-  // }
-  //
-  // // check autosave
-  // if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-  //     return $post_id;
-  // }
-  //
-  // // check permissions
-  // if ('team-member' == $_POST['post_type']) {
-  //     if (!current_user_can('edit_page', $post_id)) {
-  //         return $post_id;
-  //     }
-  // } elseif (!current_user_can('edit_post', $post_id)) {
-  //     return $post_id;
-  // }
-  //
-  // foreach ($meta_box['fields'] as $field) {
-  //     $old = get_post_meta($post_id, $field['id'], true);
-  //     $new = $_POST[$field['id']];
-  //     echo '<script> alert( '. $new .' )</script>';
-  //
-  //     if ($new && $new != $old) {
-  //         update_post_meta($post_id, $field['id'], $new);
-  //     } elseif ('' == $new && $old) {
-  //         delete_post_meta($post_id, $field['id'], $old);
-  //     }
-  // }
+  global $meta_box;
+
+
+  // verify this came from the our screen and with proper authorization,
+	// because save_post can be triggered at other times
+	if ( !wp_verify_nonce( $_POST['team_plugin_meta_box_nonce'], plugin_basename(__FILE__) )) {
+	return $post->ID;
+	}
+
+	// Is the user allowed to edit the post or page?
+	if ( !current_user_can( 'edit_post', $post->ID ))
+		return $post->ID;
+
+	// OK, we're authenticated: we need to find and save the data
+	// We'll put it into an array to make it easier to loop though.
+  foreach ($meta_box['fields'] as $field) {
+
+	$members_meta[$field['field_id']] = $_POST[$field['field_id']];
+
+	// Add values of $members_meta as custom fields
+
+	foreach ($members_meta as $key => $value) { // Cycle through the $members_meta array!
+		if( $post->post_type == 'revision' ) return; // Don't store custom data twice
+		$value = implode(',', (array)$value); // If $value is an array, make it a CSV (unlikely)
+		if(get_post_meta($post->ID, $key, FALSE)) { // If the custom field already has a value
+			update_post_meta($post->ID, $key, $value);
+		} else { // If the custom field doesn't have a value
+			add_post_meta($post->ID, $key, $value);
+		}
+		if(!$value) delete_post_meta($post->ID, $key); // Delete if blank
+	}}
+
 }
 
 //On post save, save plugin's data
-add_action('save_post', 'team_plugin_save_data');
+add_action('save_post', 'team_plugin_save_data',1,2);
 
 ?>
