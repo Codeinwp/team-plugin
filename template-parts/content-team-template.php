@@ -17,7 +17,7 @@
   <div class="container">
 
     <div class="home-section-title-wrap">
-      <h2 class="home-section-title"><?php echo esc_html($lawyers_section) ?></h2>
+      <h2 class="home-section-title">Team</h2>
     </div>
 
     <div class="home-section-inner lawyer-box-wrap">
