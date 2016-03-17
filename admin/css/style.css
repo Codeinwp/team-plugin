@@ -1,0 +1,52 @@
+#dynamic_sectionid label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px;
+  cursor: default;
+}
+
+.meta_social_screen select {
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+span.remove, span.add {
+  background: #BA0000;
+  border-color: #AA0000 #990000 #990000;
+  -webkit-box-shadow: 0 1px 0 #990000;
+  box-shadow: 0 1px 0 #990000;
+  color: #fff;
+  cursor: pointer;
+  height: 30px;
+  line-height: 28px;
+  text-align: center;
+  display: inline-block;
+  font-size: 13px;
+  height: 28px;
+  margin: 0;
+  padding: 0 10px 1px;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+span.remove {
+  background: #BA0000;
+  border-color: #AA0000 #990000 #990000;
+  -webkit-box-shadow: 0 1px 0 #990000;
+  box-shadow: 0 1px 0 #990000;
+}
+
+span.add {
+  background: #00BA31;
+  border-color: #00B30E #00992F #008641;
+  -webkit-box-shadow: 0 1px 0 #009959;
+  box-shadow: 0 1px 0 #009959;
+}

@@ -3,7 +3,7 @@
 the_title();
 the_post_thumbnail('team-member-custom-thumbnail',array( 'alt' => get_the_title() ) );
 
-$social_meta = get_post_meta($post->ID,'songs',true);
+$social_meta = get_post_meta($post->ID,'social_icons',true);
 if(!empty($social_meta)) {
 
   // print_r($social_meta);
