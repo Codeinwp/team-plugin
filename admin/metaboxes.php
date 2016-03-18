@@ -26,8 +26,8 @@
       <div id="meta_inner">
         <div class="meta_tabs">
           <ul>
-            <li><a href="#" class="general_options_tab active"><?php echo __('General Options','team-plugin'); ?></a></li>
-            <li><a href="#" class="social_icons_tab"><?php echo __('Social Icons','team-plugin'); ?></a></li>
+            <li><a class="general_options_tab active"><?php echo __('General Options','team-plugin'); ?></a></li>
+            <li><a class="social_icons_tab"><?php echo __('Social Icons','team-plugin'); ?></a></li>
           </ul>
         </div>
         <div class="meta_social_screen">

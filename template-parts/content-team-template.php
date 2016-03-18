@@ -1,13 +1,8 @@
 <?php
 
-// if ( ! function_exists( 'lawyeriax_latest_news_section' ) ) :
-/**
- * Latest news section
- */
-// function lawyeriax_latest_news_section() {
-  $args = array (
+$args = array (
     'post_type' => 'team-member',
-    'showposts' => 3,
+    'showposts' => 5,
   );
 
 ?>

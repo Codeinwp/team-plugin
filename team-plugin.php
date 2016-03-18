@@ -13,14 +13,8 @@ function team_plugin_enqueue_admin_styles() {
         wp_register_style( 'team_plugin_admin_style', plugin_dir_url( __FILE__ ) . 'admin/css/style.css', false, '1.0.0' );
         wp_enqueue_style( 'team_plugin_admin_style' );
 
-        wp_register_style( 'team_plugin_font_awesome', plugin_dir_url( __FILE__ ) . 'admin/css/font-awesome.min.css', false, '4.5.0' );
-        wp_enqueue_style( 'team_plugin_font_awesome' );
-
         wp_register_script( 'team_plugin_admin_script', plugin_dir_url( __FILE__ ) . 'admin/js/admin.js', false, '1.0.0', true );
         wp_enqueue_script( 'team_plugin_admin_script' );
-
-        wp_register_script( 'team_plugin_ddslick', plugin_dir_url( __FILE__ ) . 'admin/js/ddslick.js', false, '1.0.0', true );
-        wp_enqueue_script( 'team_plugin_ddslick' );
 
 }
 add_action( 'admin_enqueue_scripts', 'team_plugin_enqueue_admin_styles' );
@@ -86,7 +80,7 @@ function team_plugin_members_custom_post_type() {
     register_post_type( 'team-member', $args );
 
 //Add thumbnail size for team members.
-    add_image_size( 'team-member-custom-thumbnail', 200, 200, true );
+    add_image_size( 'team-member-custom-thumbnail', 150, 150, true );
     add_image_size( 'team-member-single-page-thumbnail', 370, 550, true );
 
 // Add new taxonomy, make it hierarchical (like categories)

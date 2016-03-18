@@ -22,9 +22,12 @@ get_header();
 
 				<div class="entry-content">
 
+					<?php if(!empty(get_the_post_thumbnail())) { ?>
+
 					<div class="lawyer-image">
 						<?php the_post_thumbnail('team-member-single-page-thumbnail'); ?>
 					</div>
+				<?php } ?>
 
 					<div class="entry-content-lawyer">
 						<header class="entry-header">
@@ -40,20 +43,21 @@ get_header();
 
 								} ?>
 
-								<p class="lawyer-social-media">
-									<?php $social_meta = get_post_meta($post->ID,'social_icons',true);
-									if(!empty($social_meta)) {
-										foreach($social_meta as $social_icon) {
+								<?php $social_meta = get_post_meta($post->ID,'social_icons',true);
+								if(!empty($social_meta)) {
 
+								echo '<p class="lawyer-social-media">';
 
-											if( !empty($social_icon['title']) && !empty($social_icon['icons']) ) { ?>
+								foreach($social_meta as $social_icon) {
 
-												<a href="<?php echo esc_html($social_icon['title']); ?>"><i class="fa <?php echo esc_html($social_icon['icons']);?>"></i></a>
+										if( !empty($social_icon['title']) && !empty($social_icon['icons']) ) { ?>
+
+											<a href="<?php echo esc_html($social_icon['title']); ?>"><i class="fa <?php echo esc_html($social_icon['icons']);?>"></i></a>
 							<?php }
 									}
+									echo '</p>';
 								}?>
 
-								</p>
 							</div>
 						</header><!-- .entry-header -->
 

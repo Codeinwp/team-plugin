@@ -1,47 +1,63 @@
 <?php
-
-the_title();
-the_post_thumbnail('team-member-custom-thumbnail',array( 'alt' => get_the_title() ) );
+//
+// the_title();
+// the_post_thumbnail('team-member-custom-thumbnail',array( 'alt' => get_the_title() ) );
 
 $social_meta = get_post_meta($post->ID,'social_icons',true);
-if(!empty($social_meta)) {
 
-  // print_r($social_meta);
 
-}
  ?>
-<!--
 
+     <div class="col-xs-12 col-sm-4 lawyer-box">
 
-<div class="col-md-4 team-member-box">
-  <div class="team-member">
-    <div class="news-date">
-      <?php
-      $day    = get_the_time('d');
-      $month  = get_the_time('M'); ?>
+       <div class="lawyer-box-image">
 
-      <span><?php echo $day ?></span>
-      <span><?php echo $month ?></span>
+         <?php if(!empty(get_the_post_thumbnail())) { ?>
+         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+           <?php the_post_thumbnail('team-member-custom-thumbnail'); ?>
+         </a>
+       <?php } ?>
+       </div>
+
+       <div class="lawyer-box-content">
+
+         <h5 class="lawyer-title">
+
+           <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"> <?php the_title(); ?> </a>
+
+         </h5>
+
+         <div class="border-left lawyer-box-content-inner">
+           <div class="lawyer-box-inside">
+
+         <?php $role_meta = get_post_meta($post->ID,'role_text',true);
+
+         if(!empty($role_meta)) { ?>
+
+            <p class="lawyer-box-info"><?php echo esc_html($role_meta); ?></p>
+
+         <?php } ?>
+
+         <?php $social_meta = get_post_meta($post->ID,'social_icons',true);
+          if(!empty($social_meta)) {
+
+          echo '<ul class="lawyer-media-icons">';
+
+          foreach($social_meta as $social_icon) {
+
+              if( !empty($social_icon['title']) && !empty($social_icon['icons']) ) { ?>
+
+                <li>
+                  <a href="<?php echo esc_html($social_icon['title']); ?>"><i class="fa <?php echo esc_html($social_icon['icons']);?>"></i></a>
+                </li>
+        <?php }
+            }
+            echo '</ul>';
+          }?>
+          </div>
+
+          <a href="<?php the_permalink(); ?>" class="view-profile" title="<?php the_title(); ?>"> <?php echo __('View Profile', 'team-plugin') ?></a>
+
+        </div>
+      </div>
     </div>
-    <div class="news-post-title-wrap">
-      <h4 class="news-post-title">
-        <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-      </h4>
-    </div>
-    <div class="news-posted-on">
-      <a href="<?php the_author_link(); ?> " title="<?php the_author(); ?>"><?php the_author(); ?></a>
-      <a href="<?php comments_link() ?>"><?php comments_number( __('no comments', 'lawyeriax'), __('1 comment', 'lawyeriax'), __('% comments','lawyeriax') ); ?></a>
-    </div>
-  </div>
-  <?php if (has_post_thumbnail()) { ?>
-  <div class="news-img-wrap">
-    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
-      <?php the_post_thumbnail('lawyeriax-post-thumbnail-home',array( 'alt' => get_the_title() ) );?>
-
-    </a>
-  </div> <?php } ?>
-  <div class="border-left news-content-wrap">
-    <p><?php the_excerpt();?></p>
-    <a href="<?php echo get_permalink(); ?>" title="Read more" class="read-more"><?php esc_html_e('Read more...', 'lawyeriax') ?></a>
-  </div>
-</div> -->
