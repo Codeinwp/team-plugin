@@ -81,21 +81,29 @@ get_header();
 
 					}?>
 
-					<div class="practice-aria-lawyers-inner">
+					<?php
+					$terms = get_the_terms($post->ID, 'member-group');
 
-						<ul class="practice-aria-lawyer">
+					if(!empty($terms)) {
+					?>
 
-							<?php	$terms = get_the_terms($post->ID, 'member-group');
+						<div class="practice-aria-lawyers-inner">
 
-							foreach ($terms as $term) {
+							<ul class="practice-aria-lawyer">
 
-								echo '<li class="col-md-2"><a href="' . get_term_link($term) . '">' . esc_html($term->name) . '</a></li>';
+								<?php
 
-							} ?>
+								foreach ($terms as $term) {
 
-						</ul>
+									echo '<li class="col-md-2"><a href="' . get_term_link($term) . '">' . esc_html($term->name) . '</a></li>';
 
-					</div><!-- practice-aria-lawyers-inner -->
+								} ?>
+
+							</ul>
+
+						</div><!-- practice-aria-lawyers-inner -->
+
+					<?php } ?>
 
 				</div><!-- practice-aria-lawyers-page -->
 

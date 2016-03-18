@@ -24,6 +24,12 @@
       wp_nonce_field( plugin_basename( __FILE__ ), 'dynamicMeta_noncename' );
       ?>
       <div id="meta_inner">
+        <div class="meta_tabs">
+          <ul>
+            <li><a href="#" class="general_options_tab active"><?php echo __('General Options','team-plugin'); ?></a></li>
+            <li><a href="#" class="social_icons_tab"><?php echo __('Social Icons','team-plugin'); ?></a></li>
+          </ul>
+        </div>
         <div class="meta_social_screen">
 
         <?php
@@ -33,7 +39,6 @@
         $c = 0;
         if ( !empty( $social_meta )) {
             foreach( $social_meta as $social_icon ) {
-
 
                 if ( isset( $social_icon['title'] ) || isset( $social_icon['track'] ) ) {
 
@@ -53,6 +58,7 @@
                   printf( '<label>Link</label> <input type="text" name="social_icons[%1$s][title]" value="%2$s" /> <span class="remove">%3$s</span></p>', $c, $social_icon['title'], __( 'Remove Icon', 'team-plugin' ) );
 
                   $c = $c +1;
+
                 }
             }
         }
@@ -84,13 +90,13 @@
       <?php // Member Role Metabox
 
       $role_meta = get_post_meta($post->ID,'role_text',true);
-        echo '<label>Role</label><input type="text" name="role_text" value="' . $role_meta . '">';
+        echo '<p><label>Role</label><input type="text" name="role_text" value="' . $role_meta . '"></p>';
 
       $group_heading_meta = get_post_meta($post->ID,'group_heading_text',true);
-        echo '<label>Groups Heading</label><input type="text" name="group_heading_text" value="' . $group_heading_meta . '">';
+        echo '<p><label>Groups Heading</label><input type="text" name="group_heading_text" value="' . $group_heading_meta . '"></p>';
 
       $description_meta = get_post_meta($post->ID,'description_text',true);
-        echo '<label>Short Description </label><textarea name="description_text">' . $description_meta . '"</textarea>';
+        echo '<p><label>Short Description </label><textarea name="description_text">' . $description_meta . '</textarea></p>';
 
       ?>
     </div>
