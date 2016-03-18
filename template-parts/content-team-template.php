@@ -31,6 +31,8 @@ $args = array (
 
             endwhile;
 
+            wp_reset_query();
+
 
   		 ?>
   			</div>
