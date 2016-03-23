@@ -19,6 +19,25 @@ function team_plugin_enqueue_admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'team_plugin_enqueue_admin_styles' );
 
+function ti_check_bootstrap() {
+  $wp_scripts = wp_print_scripts();
+  $wp_scripts_serialized = serialize($wp_scripts);
+
+  if (strpos($wp_scripts_serialized, 'bootstrap') !== false) {
+    var_dump('TRUE');
+  } else {
+    var_dump('FALSE');
+
+  }
+  var_dump($wp_scripts);
+
+  var_dump($wp_scripts_serialized);
+  die();
+
+}
+
+add_action( 'wp_enqueue_scripts', 'ti_check_bootstrap', 9999 );
+
 
 
 include( plugin_dir_path( __FILE__ ) . 'admin/metaboxes.php');
