@@ -127,3 +127,7 @@ span.add {
 .meta_general_screen p:first-child {
   margin-top: 0;
 }
+
+#accordion-panel-team_plugin_panel > h3:after {
+  content: "\f483" !important;
+}

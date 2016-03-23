@@ -1,0 +1,50 @@
+#team-plugin-section,
+#team-plugin-section p{
+  text-align: center;
+}
+
+.team-plugin-member-container {
+  margin: 25px 0;
+}
+
+.team-plugin-member-thumbnail-container {
+  position: relative;
+  height: auto;
+  width: auto;
+  z-index: 0;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.team-plugin-member-thumbnail-overlay {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 17px 17px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.team-plugin-member-thumbnail-container:hover .team-plugin-member-thumbnail-overlay {
+    opacity: 1;
+}
+
+.team-plugin-member-thumbnail-overlay,
+.team-plugin-member-thumbnail-overlay p.team-plugin-member-description {
+  color: #fff;
+}
+
+.team-plugin-member-container a i{
+  margin: 0 5px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.team-plugin-member-container hr {
+  width: 80%;
+  margin: 0 auto;
+}

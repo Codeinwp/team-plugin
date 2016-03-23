@@ -2,9 +2,7 @@
 /**
  * Single Team Member
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package lawyeriax
+ * @package team-plugin
  */
 
 get_header();

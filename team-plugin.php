@@ -9,6 +9,9 @@ Author URI: http://themeisle.com
 Text Domain: team-plugin
 */
 
+/**
+ *  Enqueue style and script for back end
+ */
 function team_plugin_enqueue_admin_styles() {
         wp_register_style( 'team_plugin_admin_style', plugin_dir_url( __FILE__ ) . 'admin/css/style.css', false, '1.0.0' );
         wp_enqueue_style( 'team_plugin_admin_style' );
@@ -19,28 +22,50 @@ function team_plugin_enqueue_admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'team_plugin_enqueue_admin_styles' );
 
-function ti_check_bootstrap() {
-  $wp_scripts = wp_print_scripts();
-  $wp_scripts_serialized = serialize($wp_scripts);
+/**
+ *  Check for Bootstrap and enqueue it if it is not present
+ */
+function team_plugin_check_dependencies() {
 
-  if (strpos($wp_scripts_serialized, 'bootstrap') !== false) {
-    var_dump('TRUE');
-  } else {
-    var_dump('FALSE');
+  $wp_styles = wp_styles();
+  $registered_styles = $wp_styles->registered;
+  $serialized_styles = serialize($registered_styles);
 
+  $wp_scripts = wp_scripts();
+  $registered_scripts = $wp_scripts->registered;
+  $serialized_scripts = serialize($registered_scripts);
+
+//check for twitter bootstrap and enqueue it in absence
+  if ((strpos($serialized_scripts, 'bootstrap') == false) || (strpos($serialized_styles, 'bootstrap') == false)) {
+    wp_register_style( 'team_plugin_bootstrap', plugin_dir_url( __FILE__ ) . 'public/css/bootstrap.min.css', false, 'v3.3.6' );
+    wp_enqueue_style( 'team_plugin_bootstrap' );
   }
-  var_dump($wp_scripts);
-
-  var_dump($wp_scripts_serialized);
-  die();
+//check for fontawesome and enqueue it in absence
+  if((strpos($serialized_styles, 'fontawesome') == false) || (strpos($serialized_styles, 'font-awesome') == false)) {
+    wp_register_style( 'team_plugin_fontawesome', plugin_dir_url( __FILE__ ) . 'public/css/font-awesome.min.css', false, 'v4.5.0zz' );
+    wp_enqueue_style( 'team_plugin_fontawesome' );
+  }
 
 }
-
-add_action( 'wp_enqueue_scripts', 'ti_check_bootstrap', 9999 );
-
+add_action( 'wp_enqueue_scripts', 'team_plugin_check_dependencies', 9999 );
 
 
-include( plugin_dir_path( __FILE__ ) . 'admin/metaboxes.php');
+/**
+ *  Enqueue style and script for front end
+ */
+function team_plugin_enqueue_styles() {
+   if (!file_exists(TEMPLATEPATH . '/content-team-single.php')) {
+    wp_register_style( 'team_plugin_style_shortcode_section', plugin_dir_url( __FILE__ ) . 'public/css/style-section.css', false, '1.0.0' );
+    wp_enqueue_style( 'team_plugin_style_shortcode_section' );
+  }
+
+  if (!file_exists(TEMPLATEPATH . '/single-team-member.php')) {
+   wp_register_style( 'team_plugin_style_single_member', plugin_dir_url( __FILE__ ) . 'public/css/style-single.css', false, '1.0.0' );
+   wp_enqueue_style( 'team_plugin_style_single_member' );
+ }
+}
+add_action( 'wp_enqueue_scripts', 'team_plugin_enqueue_styles' );
+
 
 /**
  *  Flush Rewrite Rules on activation and on theme change
@@ -56,6 +81,16 @@ function team_plugin_flush_rewrites() {
 	flush_rewrite_rules();
 }
 
+
+/**
+ *  Include the metabox construction for team members custom post type.
+ */
+include plugin_dir_path( __FILE__ ) . 'admin/metaboxes.php';
+
+/*
+Call customizer extension
+*/
+require plugin_dir_path( __FILE__ ) . '/inc/customizer.php';
 
 /**
  *  Custom Post Type: Team Member
@@ -99,7 +134,7 @@ function team_plugin_members_custom_post_type() {
     register_post_type( 'team-member', $args );
 
 //Add thumbnail size for team members.
-    add_image_size( 'team-member-custom-thumbnail', 150, 150, true );
+    add_image_size( 'team-member-custom-thumbnail', 220, 220, true );
     add_image_size( 'team-member-single-page-thumbnail', 370, 550, true );
 
 // Add new taxonomy, make it hierarchical (like categories)
@@ -140,7 +175,7 @@ function team_plugin_check_template($single_template) {
      if ($post->post_type == 'team-member') {
 
        if (file_exists(TEMPLATEPATH . '/single-team-member.php')) {
-        //  die();
+
          $single_template = TEMPLATEPATH . '/single-team-member.php';
        } else {
          $single_template = dirname( __FILE__ ) . '/template-parts/single-team-member.php';
