@@ -192,12 +192,14 @@ add_filter( 'single_template', 'team_plugin_check_template' );
  */
 function team_plugin_section_shortcode() {
 
-  if ( $overridden_template = locate_template( '/content-team-template.php' ) ) {
-    load_template( $overridden_template );
-  } else {
+  // if ( $overridden_template = locate_template( '/content-team-template.php' ) ) {
+  //
+  //   load_template( $overridden_template );
+  //
+  // } else {
 
     load_template( dirname( __FILE__ ) . '/template-parts/content-team-template.php' );
-  }
+  // }
 
 }
 add_shortcode( 'team', 'team_plugin_section_shortcode' );

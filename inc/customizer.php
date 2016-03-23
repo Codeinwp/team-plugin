@@ -31,18 +31,20 @@ function team_plugin_customizer( $wp_customize ) {
     'section'    => 'team_plugin_section',
   ));
 
+
   //  =============================
-  //  = Section Subheading        =
+  //  = Profile Button Text       =
   //  =============================
-  $wp_customize->add_setting( 'team_plugin_section_subheading',array(
-    'default'        => esc_html__('Present your team members and their role in the company.', 'team-plugin'),
+  $wp_customize->add_setting( 'team_plugin_profile_button',array(
+    'default'        => esc_html__('View Profile', 'team-plugin'),
     'capability'     => 'edit_theme_options',
   ));
 
-  $wp_customize->add_control( 'team_plugin_section_subheading', array(
-    'label'      => esc_html__('Section Subheading', 'team-plugin'),
+  $wp_customize->add_control( 'team_plugin_profile_button', array(
+    'label'      => esc_html__('&#34;View Profile&#34; Button Text', 'team-plugin'),
     'section'    => 'team_plugin_section',
   ));
+
 
   //  =============================
   //  = Team members number       =
