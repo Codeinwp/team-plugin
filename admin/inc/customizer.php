@@ -90,34 +90,7 @@ function team_plugin_customizer( $wp_customize ) {
 
 
   //  =============================
-  //  = Buttons Hover Color       =
-  //  =============================
-  $wp_customize->add_setting('team_plugin_buttons_hover_color', array(
-				'default'           => '#333',
-				'sanitize_callback' => 'sanitize_hex_color',
-	));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'team_plugin_buttons_hover_color', array(
-			'label'      => __( 'Buttons hover color', 'team-plugin' ),
-			'section'    => 'team_plugin_colors_section',
-	)));
-
-
-  //  =============================
   //  = Buttons Text Color        =
-  //  =============================
-  $wp_customize->add_setting('team_plugin_buttons_text_color', array(
-				'default'           => '#fff',
-				'sanitize_callback' => 'sanitize_hex_color',
-				// 'transport'					=> 'postMessage',
-	));
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'team_plugin_buttons_text_color', array(
-			'label'      => __( 'Buttons text color', 'team-plugin' ),
-			'section'    => 'team_plugin_colors_section',
-	)));
-
-
-  //  =============================
-  //  = Buttons Hover Text Color  =
   //  =============================
   $wp_customize->add_setting('team_plugin_buttons_text_color', array(
 				'default'           => '#fff',
@@ -142,7 +115,6 @@ function team_plugin_customizer( $wp_customize ) {
 			'label'      => __( 'Links color', 'team-plugin' ),
 			'section'    => 'team_plugin_colors_section',
 	)));
-
 
 }
 add_action( 'customize_register', 'team_plugin_customizer', 30 );

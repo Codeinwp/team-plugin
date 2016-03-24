@@ -85,12 +85,17 @@ function team_plugin_flush_rewrites() {
 /**
  *  Include the metabox construction for team members custom post type.
  */
-include plugin_dir_path( __FILE__ ) . 'admin/metaboxes.php';
+include plugin_dir_path( __FILE__ ) . 'admin/inc/metaboxes.php';
 
 /*
 Call customizer extension
 */
-require plugin_dir_path( __FILE__ ) . '/inc/customizer.php';
+require plugin_dir_path( __FILE__ ) . 'admin/inc/customizer.php';
+
+/*
+Call customizer extension
+*/
+require plugin_dir_path( __FILE__ ) . 'admin/inc/custom-colors.php';
 
 /**
  *  Custom Post Type: Team Member
