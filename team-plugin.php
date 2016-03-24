@@ -22,6 +22,16 @@ function team_plugin_enqueue_admin_styles() {
 }
 add_action( 'admin_enqueue_scripts', 'team_plugin_enqueue_admin_styles' );
 
+
+/**
+ *  Load customizer script for settings async
+ */
+function team_plugin_customizer_async(){
+        wp_register_script( 'team_plugin_async_script', plugin_dir_url( __FILE__ ) . 'admin/js/customizer.js', false, '1.0.0', true );
+        wp_enqueue_script( 'team_plugin_async_script' );
+
+}
+add_action( 'customize_preview_init', 'team_plugin_customizer_async' );
 /**
  *  Check for Bootstrap and enqueue it if it is not present
  */

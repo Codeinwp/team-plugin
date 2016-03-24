@@ -48,3 +48,12 @@
   width: 80%;
   margin: 0 auto;
 }
+
+#team-plugin-section p.team-plugin-member-social-icons,
+#team-plugin-section h4 {
+  margin: 10px 0;
+}
+
+#team-plugin-section .team-plugin-member-container p {
+  margin: 10px 0;
+}
