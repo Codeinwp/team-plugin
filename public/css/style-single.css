@@ -16,7 +16,11 @@
   clear:none;
 }
 
-.team-member-groups {
+.team-member footer.entry-footer {
+  clear: both;
   padding-top: 30px;
-  display: block;
+}
+
+.team-member #sidebar.sidebar-primary {
+  display: none;
 }
