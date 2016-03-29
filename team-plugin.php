@@ -64,12 +64,12 @@ add_action( 'wp_enqueue_scripts', 'team_plugin_check_dependencies', 9999 );
  *  Enqueue style and script for front end
  */
 function team_plugin_enqueue_styles() {
-   if (!file_exists(TEMPLATEPATH . '/content-team-single.php')) {
+   if (!file_exists(get_template_directory() . '/content-team-single.php')) {
     wp_register_style( 'team_plugin_style_shortcode_section', plugin_dir_url( __FILE__ ) . 'public/css/style-section.css', false, '1.0.0' );
     wp_enqueue_style( 'team_plugin_style_shortcode_section' );
   }
 
-  if (!file_exists(TEMPLATEPATH . '/single-team-member.php')) {
+  if (!file_exists(get_template_directory() . '/single-team-member.php')) {
    wp_register_style( 'team_plugin_style_single_member', plugin_dir_url( __FILE__ ) . 'public/css/style-single.css', false, '1.0.0' );
    wp_enqueue_style( 'team_plugin_style_single_member' );
  }
@@ -106,6 +106,28 @@ require plugin_dir_path( __FILE__ ) . 'admin/inc/customizer.php';
 Call customizer extension
 */
 require plugin_dir_path( __FILE__ ) . 'admin/inc/custom-colors.php';
+
+/*
+Call customizer extension
+*/
+function team_plugin_settings_buttons( $actions, $plugin_file )
+{
+	static $plugin;
+
+	if (!isset($plugin))
+		$plugin = plugin_basename(__FILE__);
+	if ($plugin == $plugin_file) {
+
+			$settings = array('settings' => '<a href="' . admin_url( 'customize.php?autofocus[panel]=team_plugin_panel' ) . '">' . __('Settings', 'General') . '</a>');
+
+    			$actions = array_merge($settings, $actions);
+
+		}
+
+		return $actions;
+}
+add_filter( 'plugin_action_links', 'team_plugin_settings_buttons', 10, 5 );
+
 
 /**
  *  Custom Post Type: Team Member
@@ -189,9 +211,9 @@ function team_plugin_check_template($single_template) {
 
      if ($post->post_type == 'team-member') {
 
-       if (file_exists(TEMPLATEPATH . '/single-team-member.php')) {
+       if (file_exists(get_template_directory() . '/single-team-member.php')) {
 
-         $single_template = TEMPLATEPATH . '/single-team-member.php';
+         $single_template = get_template_directory() . '/single-team-member.php';
        } else {
          $single_template = dirname( __FILE__ ) . '/template-parts/single-team-member.php';
         }

@@ -24,3 +24,18 @@
 .team-member #sidebar.sidebar-primary {
   display: none;
 }
+
+.single-team-member .content-area {
+  width: 100% !important;
+}
+
+.single-team-member #content main#main article.team-member div.entry-content {
+  float: none;
+  width: 100%;
+}
+
+.single-team-member #content main#main article.team-member footer.entry-footer ul.group-team-member li {
+  padding:0;
+  margin: 0 10px;
+  display: inline-block;
+}

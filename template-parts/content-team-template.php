@@ -37,9 +37,9 @@ if(is_front_page()) {
 
               while ( $loop->have_posts() ) : $loop->the_post();
 
-                if(file_exists ( TEMPLATEPATH . '/content-team-single.php' )) {
+                if(file_exists ( get_template_directory() . '/content-team-single.php' )) {
 
-                    $overridden_template = TEMPLATEPATH . '/content-team-single.php';
+                    $overridden_template = get_template_directory() . '/content-team-single.php';
                     load_template( $overridden_template, false );
 
                 } else {

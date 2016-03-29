@@ -16,7 +16,9 @@
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-					<?php if(!empty(get_the_post_thumbnail())) { ?>
+					<?php $member_image = get_the_post_thumbnail();
+
+          if(!empty($member_image)) { ?>
 
 						<div class="team-member-image">
 
@@ -108,7 +110,7 @@
 							edit_post_link(
 								sprintf(
 									/* translators: %s: Name of current post */
-									esc_html__( 'Edit %s', 'lawyeriax' ),
+									esc_html__( 'Edit %s', 'team-plugin' ),
 									the_title( '<span class="screen-reader-text">"', '"</span>', false )
 								),
 								'<span class="edit-link">',
@@ -117,17 +119,13 @@
 						?>
 					</footer><!-- .entry-footer -->
 			</article>
-		</main><!-- #main -->
-	</div> <!-- #primary -->
+
+
+    <?php endwhile; ?>
+
+    </main><!-- #main -->
+  </div> <!-- #primary -->
 </div>
 
 
-<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				// if ( comments_open() || get_comments_number() ) :
-				// 	comments_template();
-				// endif;
-
-			endwhile; // End of the loop.
-
-      get_footer();
+<?php get_footer(); ?>
