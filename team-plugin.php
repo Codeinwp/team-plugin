@@ -45,14 +45,14 @@ function team_plugin_check_dependencies() {
   $registered_scripts = $wp_scripts->registered;
   $serialized_scripts = serialize($registered_scripts);
 
-//check for twitter bootstrap and enqueue it in absence
-  if ((strpos($serialized_scripts, 'bootstrap') == false) || (strpos($serialized_styles, 'bootstrap') == false)) {
+//check for twitter bootstrap and enqueue it in absence.
+  if ((strpos($serialized_scripts, 'bootstrap') == false) && (strpos($serialized_styles, 'bootstrap') == false)) {
     wp_register_style( 'team_plugin_bootstrap', plugin_dir_url( __FILE__ ) . 'public/css/bootstrap.min.css', false, 'v3.3.6' );
     wp_enqueue_style( 'team_plugin_bootstrap' );
   }
-//check for fontawesome and enqueue it in absence
-  if((strpos($serialized_styles, 'fontawesome') == false) || (strpos($serialized_styles, 'font-awesome') == false)) {
-    wp_register_style( 'team_plugin_fontawesome', plugin_dir_url( __FILE__ ) . 'public/css/font-awesome.min.css', false, 'v4.5.0zz' );
+//check for fontawesome and enqueue it in absence.
+  if((strpos($serialized_styles, 'fontawesome') == false) && (strpos($serialized_styles, 'font-awesome') == false)) {
+    wp_register_style( 'team_plugin_fontawesome', plugin_dir_url( __FILE__ ) . 'public/css/font-awesome.min.css', false, 'v4.5.0' );
     wp_enqueue_style( 'team_plugin_fontawesome' );
   }
 
