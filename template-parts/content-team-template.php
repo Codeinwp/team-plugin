@@ -1,6 +1,4 @@
 <?php
-$section_heading  = get_theme_mod('team_plugin_section_heading', esc_html__('Our team','team-plugin'));
-$section_subheading  = get_theme_mod('team_plugin_section_subheading', esc_html__('Present your team members and their role in the company.','team-plugin'));
 $members_number = get_theme_mod('team_plugin_members_number', '4');
 $view_profile_button = get_theme_mod('team_plugin_profile_button', esc_html__('View Profile'));
 $args = array (
@@ -16,17 +14,6 @@ if(is_front_page()) {
 ?>
 
    <div class="row row-centered">
-
-
-      <?php if(!empty($section_heading)) { ?>
-
-           <div class="col-lg-12 team-plugin-section-title">
-
-               <h2><?php echo esc_html($section_heading); ?></h2>
-
-           </div><!-- team-plugin-section-title -->
-
-       <?php } ?>
 
            <div class="team-plugin-members-wrapper">
 

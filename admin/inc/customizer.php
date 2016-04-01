@@ -19,21 +19,6 @@ function team_plugin_customizer( $wp_customize ) {
 
 
   //  =============================
-  //  = Section Heading           =
-  //  =============================
-  $wp_customize->add_setting( 'team_plugin_section_heading',array(
-    'default'        => esc_html__('Our team', 'team-plugin'),
-    'capability'     => 'edit_theme_options',
-    'transport'      => 'postMessage',
-  ));
-
-  $wp_customize->add_control( 'team_plugin_section_heading', array(
-    'label'      => esc_html__('Section Heading', 'team-plugin'),
-    'section'    => 'team_plugin_general_options_section',
-  ));
-
-
-  //  =============================
   //  = Profile Button Text       =
   //  =============================
   $wp_customize->add_setting( 'team_plugin_profile_button',array(
