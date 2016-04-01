@@ -32,7 +32,7 @@ $custom_css = get_theme_mod('team_plugin_custom_css');
 	color: <?php echo esc_html($links_hover_color); ?>;
 }
 
-<?php echo esc_html($custom_css); ?>
+<?php echo wp_filter_nohtml_kses($custom_css); ?>
 
 
 </style>
