@@ -105,7 +105,7 @@ require plugin_dir_path( __FILE__ ) . 'admin/inc/customizer.php';
 /*
 Call customizer extension
 */
-// require plugin_dir_path( __FILE__ ) . 'admin/inc/custom-colors.php';
+require plugin_dir_path( __FILE__ ) . 'admin/inc/custom-colors.php';
 
 /*
 Call customizer extension
