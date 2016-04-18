@@ -1,0 +1,59 @@
+#teammates-section,
+#teammates-section p{
+  text-align: center;
+}
+
+.teammates-member-container {
+  margin: 25px 0;
+}
+
+.teammates-member-thumbnail-container {
+  position: relative;
+  height: auto;
+  width: auto;
+  z-index: 0;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.teammates-member-thumbnail-overlay {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 17px 17px;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.teammates-member-thumbnail-container:hover .teammates-member-thumbnail-overlay {
+    opacity: 1;
+}
+
+.teammates-member-thumbnail-overlay,
+.teammates-member-thumbnail-overlay p.teammates-member-description {
+  color: #fff;
+}
+
+.teammates-member-container a i{
+  margin: 0 5px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.teammates-member-container hr {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#teammates-section p.teammates-member-social-icons,
+#teammates-section h4 {
+  margin: 10px 0;
+}
+
+#teammates-section .teammates-member-container p {
+  margin: 10px 0;
+}
