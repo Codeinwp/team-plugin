@@ -2,23 +2,23 @@
 
 
   /* Adds a box to the main column on the Post and Page edit screens */
-  function team_plugin_dynamic_add_custom_box() {
+  function teammates_dynamic_add_custom_box() {
       add_meta_box(
 
           'dynamic_sectionid',
-          __( 'Team Member Properties', 'team-plugin' ),
-          'team_plugin_dynamic_render_inner_custom_box',
-          'team-member',
+          __( 'Teammate Properties', 'teammates' ),
+          'teammates_dynamic_render_inner_custom_box',
+          'teammate',
           'normal',
           'high');
   }
-  add_action( 'add_meta_boxes', 'team_plugin_dynamic_add_custom_box' );
+  add_action( 'add_meta_boxes', 'teammates_dynamic_add_custom_box' );
 
   /* Do something with the data entered */
-  add_action( 'publish_team-member', 'team_plugin_dynamic_save_postdata' );
+  add_action( 'publish_teammate', 'teammates_dynamic_save_postdata' );
 
   /* Prints the box content */
-  function team_plugin_dynamic_render_inner_custom_box() {
+  function teammates_dynamic_render_inner_custom_box() {
       global $post;
       // Use nonce for verification
       wp_nonce_field( plugin_basename( __FILE__ ), 'dynamicMeta_noncename' );
@@ -26,8 +26,8 @@
       <div id="meta_inner">
         <div class="meta_tabs">
           <ul>
-            <li><a class="general_options_tab active"><?php echo __('General Options','team-plugin'); ?></a></li>
-            <li><a class="social_icons_tab"><?php echo __('Social Icons','team-plugin'); ?></a></li>
+            <li><a class="general_options_tab active"><?php echo __('General Options','teammates'); ?></a></li>
+            <li><a class="social_icons_tab"><?php echo __('Social Icons','teammates'); ?></a></li>
           </ul>
         </div>
         <div class="meta_social_screen">
@@ -55,7 +55,7 @@
 
                   echo '</select>';
 
-                  printf( '<label>Link</label> <input type="text" name="social_icons[%1$s][title]" value="%2$s" /> <span class="remove">%3$s</span></p>', $c, $social_icon['title'], __( 'Remove Icon', 'team-plugin' ) );
+                  printf( '<label>Link</label> <input type="text" name="social_icons[%1$s][title]" value="%2$s" /> <span class="remove">%3$s</span></p>', $c, $social_icon['title'], __( 'Remove Icon', 'teammates' ) );
 
                   $c = $c +1;
 
@@ -67,7 +67,7 @@
 
         ?>
     <span id="here"></span>
-    <span class="add"><?php _e('Add Icon', 'team-plugin'); ?></span>
+    <span class="add"><?php _e('Add Icon', 'teammates'); ?></span>
     <script>
         var $ =jQuery.noConflict();
         $(document).ready(function() {
@@ -87,7 +87,7 @@
 
     <div class="meta_general_screen">
 
-      <?php // Member Role Metabox
+      <?php
 
       $role_meta = get_post_meta($post->ID,'role_text',true);
         echo '<p><label>Role</label><input type="text" name="role_text" value="' . $role_meta . '"></p>';
@@ -104,7 +104,7 @@
   }
 
   /* When the post is saved, saves our custom data */
-  function team_plugin_dynamic_save_postdata( $post_id ) {
+  function teammates_dynamic_save_postdata( $post_id ) {
       // verify if this is an auto save routine.
       // If it is our form has not been submitted, so we dont want to do anything
       if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )

@@ -2,7 +2,7 @@
 /**
  * Single Team Member
  *
- * @package team-plugin
+ * @package teammates
  */
 
 
@@ -18,11 +18,11 @@
 
 					<?php $member_image = get_the_post_thumbnail();
 
-          if(!empty($member_image)) { ?>
+						if(!empty($member_image)) { ?>
 
 						<div class="team-member-image">
 
-							<?php the_post_thumbnail('team-member-single-page-thumbnail'); ?>
+							<?php the_post_thumbnail('teammate-single-page-thumbnail'); ?>
 
 						</div>
 
@@ -66,7 +66,7 @@
 						<?php the_content();
 
 						wp_link_pages( array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'team-plugin' ),
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'teammates' ),
 							'after'  => '</div>',
 						)); ?>
 
@@ -110,7 +110,7 @@
 							edit_post_link(
 								sprintf(
 									/* translators: %s: Name of current post */
-									esc_html__( 'Edit %s', 'team-plugin' ),
+									esc_html__( 'Edit %s', 'teammates' ),
 									the_title( '<span class="screen-reader-text">"', '"</span>', false )
 								),
 								'<span class="edit-link">',

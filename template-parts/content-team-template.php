@@ -1,12 +1,12 @@
 <?php
-$members_number = get_theme_mod('team_plugin_members_number', '4');
-$view_profile_button = get_theme_mod('team_plugin_profile_button', esc_html__('View Profile'));
+$members_number = get_theme_mod('teammates_members_number', '4');
+$view_profile_button = get_theme_mod('teammates_profile_button', esc_html__('View Profile','teammates'));
 $args = array (
-    'post_type' => 'team-member',
+    'post_type' => 'teammate',
     'showposts' => $members_number,
   );
 ?>
-<section id="team-plugin-section">
+<section id="teammates-section">
 <?php
 if(is_front_page()) {
   echo '<div class="container">';
@@ -15,7 +15,7 @@ if(is_front_page()) {
 
    <div class="row row-centered">
 
-           <div class="team-plugin-members-wrapper">
+           <div class="teammates-members-wrapper">
 
 			     <!-- Posts Loop -->
     				<?php
@@ -38,28 +38,28 @@ if(is_front_page()) {
                    ?>
 
 
-                   <div class="col-lg-3 col-sm-6 col-xs-12 col-centered team-plugin-member-container">
-                       <div class="team-plugin-member-thumbnail-container">
+                   <div class="col-lg-3 col-sm-6 col-xs-12 col-centered teammates-member-container">
+                       <div class="teammates-member-thumbnail-container">
                            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                             <?php the_post_thumbnail('team-member-custom-thumbnail'); ?>
+                             <?php the_post_thumbnail('teammates-custom-thumbnail'); ?>
                            </a>
 
-                           <div class="team-plugin-member-thumbnail-overlay">
+                           <div class="teammates-member-thumbnail-overlay">
 
                                  <?php if(!empty($description_meta)) {
 
-                                   echo '<p class="team-plugin-member-description">' . esc_html($description_meta) . '</p>';
+                                   echo '<p class="teammates-member-description">' . esc_html($description_meta) . '</p>';
 
                                  } ?>
 
-                           </div><!-- team-plugin-member-thumbnail-overlay -->
-                       </div><!-- team-plugin-member-thumbnail-container -->
+                           </div><!-- teammates-member-thumbnail-overlay -->
+                       </div><!-- teammates-member-thumbnail-container -->
 
                        <?php
 
                        if(!empty($social_meta)) {
 
-                           echo '<p class="team-plugin-member-social-icons">';
+                           echo '<p class="teammates-member-social-icons">';
 
                            foreach($social_meta as $social_icon) {
 
@@ -86,7 +86,7 @@ if(is_front_page()) {
                         <a href="<?php the_permalink(); ?>"><button type="button"><?php echo esc_html($view_profile_button); ?></button></a>
 
 
-                   </div><!-- team-plugin-member-container -->
+                   </div><!-- teammates-member-container -->
 
                   <?php }
 
@@ -96,7 +96,7 @@ if(is_front_page()) {
 
               ?> <!-- End Posts Loop -->
 
-        </div><!-- team-plugin-members-wrapper -->
+        </div><!-- teammates-members-wrapper -->
     </div>
 
     <?php if(is_front_page()) {

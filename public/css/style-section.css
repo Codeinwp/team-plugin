@@ -1,13 +1,13 @@
-#team-plugin-section,
-#team-plugin-section p{
+#teammates-section,
+#teammates-section p{
   text-align: center;
 }
 
-.team-plugin-member-container {
+.teammates-member-container {
   margin: 25px 0;
 }
 
-.team-plugin-member-thumbnail-container {
+.teammates-member-thumbnail-container {
   position: relative;
   height: auto;
   width: auto;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.team-plugin-member-thumbnail-overlay {
+.teammates-member-thumbnail-overlay {
     position: absolute;
     top: 5%;
     bottom: 5%;
@@ -29,31 +29,31 @@
     transition: all 0.5s ease;
 }
 
-.team-plugin-member-thumbnail-container:hover .team-plugin-member-thumbnail-overlay {
+.teammates-member-thumbnail-container:hover .teammates-member-thumbnail-overlay {
     opacity: 1;
 }
 
-.team-plugin-member-thumbnail-overlay,
-.team-plugin-member-thumbnail-overlay p.team-plugin-member-description {
+.teammates-member-thumbnail-overlay,
+.teammates-member-thumbnail-overlay p.teammates-member-description {
   color: #fff;
 }
 
-.team-plugin-member-container a i{
+.teammates-member-container a i{
   margin: 0 5px;
   font-size: 20px;
   text-decoration: none;
 }
 
-.team-plugin-member-container hr {
+.teammates-member-container hr {
   width: 80%;
   margin: 0 auto;
 }
 
-#team-plugin-section p.team-plugin-member-social-icons,
-#team-plugin-section h4 {
+#teammates-section p.teammates-member-social-icons,
+#teammates-section h4 {
   margin: 10px 0;
 }
 
-#team-plugin-section .team-plugin-member-container p {
+#teammates-section .teammates-member-container p {
   margin: 10px 0;
 }
