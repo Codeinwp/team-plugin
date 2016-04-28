@@ -121,18 +121,340 @@
       // Save the data from metaboxes.
 
       $social_meta = $_POST['social_icons'];
+	  
+	  function teammatesSanitizeArray( $val ) {
+		  
+		  $new_val = array();
+		  
+		  
+		  switch ( $val['icons'] ) {
+			  
+				case 'No':
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-envelope':	
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-map-marker':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-500px':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-amazon':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-android':	
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-behance':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-behance-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-bitbucket':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;		
+				case 'fa-bitbucket-square':	
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-cc-amex':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-cc-diners-club':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-cc-discover':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-cc-jcb':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-cc-mastercard':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-paypal':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-cc-stripe':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-cc-visa':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-codepen':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-css3':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-delicious':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-deviantart':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-digg':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-dribbble':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-dropbox':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-drupal':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-facebook':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-facebook-official':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-facebook-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-flickr':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-foursquare':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-git':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-git-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-github':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-github-alt':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-github-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;			
+				case 'fa-google':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-google-plus':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-google-plus-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-html5':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-instagram':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-joomla':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-jsfiddle':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-linkedin':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-linkedin-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-opencart':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-openid':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-pinterest':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-pinterest-p':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-pinterest-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-rebel':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-reddit':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-reddit-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-share-alt':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-share-alt-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-skype':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-slack':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-soundcloud':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-spotify':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-stack-overflow':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-steam':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-steam-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-tripadvisor':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-tumblr':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-tumblr-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-twitch':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;
+				case 'fa-twitter':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-twitter-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-vimeo':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-vimeo-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-vine':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-whatsapp':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-wordpress':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-yahoo':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-youtube':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;	
+				case 'fa-youtube-play':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;		
+				case 'fa-youtube-square':		
+					$new_val['icons'] = $val['icons'];
+					$new_val['title'] = ( isset( $val['title'] ) ) ? esc_url( $val['title'] ) : '';					
+					break;		
+					
+		  }	
+		  
+		  return $new_val;
+		  
+	  }
+	  
+      update_post_meta($post_id,'social_icons',array_map( 'teammatesSanitizeArray', $social_meta ));
 
-      update_post_meta($post_id,'social_icons',$social_meta);
-
-      $role_meta = $_POST['role_text'];
+      $role_meta = sanitize_text_field( $_POST['role_text'] );
 
       update_post_meta($post_id,'role_text',$role_meta);
 
-      $group_heading_meta = $_POST['group_heading_text'];
+      $group_heading_meta = sanitize_text_field( $_POST['group_heading_text'] );
 
       update_post_meta($post_id,'group_heading_text',$group_heading_meta);
 
-      $description_meta = $_POST['description_text'];
+      $description_meta = sanitize_text_field( $_POST['description_text'] );
 
       update_post_meta($post_id,'description_text',$description_meta);
   }
