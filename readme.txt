@@ -6,7 +6,7 @@ Tested up to: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin that helps you manage your team area easier using just a shortcode that can be simply added anywhere on your site.
+A plugin that helps you manage your team area easier using just a shortcode [teammates] that can be simply added anywhere on your site.
 
 == Description ==
 
