@@ -2,7 +2,7 @@
 /*
 Plugin Name: Teammates
 Plugin URI: https://wordpress.org/plugins/teammates/
-Description: Generates a shortcode to add a section for your team
+Description: A plugin that helps you manage your team area easier using just a shortcode that can be simply added anywhere on your site.
 Version: 0.1.1
 Author: Themeisle
 Author URI: http://themeisle.com
