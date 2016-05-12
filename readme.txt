@@ -1,8 +1,8 @@
-=== Teammates ===
+=== WordPress Team Plugin - Teammates ===
 Contributors: themeisle, codeinwp
-Tags:
+Tags: carousel, custom, custom post type, cv, directory, employees, grid, honeycomb, meet team, members, portal, portfolio, profile, shortcode, skills, social, stack, staff, team, template, v-card, widget
 Requires at least: 3.0
-Tested up to: 4.4
+Tested up to: 4.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -10,7 +10,7 @@ A plugin that helps you manage your team area easier using just a shortcode [tea
 
 == Description ==
 
-Add a beautiful section with your team members on your site using the Teammates plugin. All you have to do is add the people, take the [teammates] shortcode, and paste it anywhere you want.
+Add a beautiful section with your team members on your site using the WordPress Team plugin. All you have to do is add the people, take the [teammates] shortcode, and paste it anywhere you want.
 
 **Features**
 
@@ -22,7 +22,7 @@ Add a beautiful section with your team members on your site using the Teammates 
 
 - Works in any location on the site. You can easily add the team shortcode anywhere on the site, including posts and pages. It will fit very well.
 
-- Friendly and intuitive. The plugin offers a very friendly, modern, and intuitive interface that lets you add the team members in a few clicks. It is very easy to
+- Friendly and intuitive meet the team showcase plugin. The plugin offers a very friendly, modern, and intuitive interface that lets you add the team members in a few clicks. It is very easy to
 use by anyone.
 
 - Lightweight and ready in a few clicks. After you install the plugin, it won't take long to create the team section, as it can be customized quickly, in a few clicks. Besides, Teammates was made to load fast, so your site's speed won't be affected at all.
