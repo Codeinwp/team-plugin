@@ -10,7 +10,7 @@ A plugin that helps you manage your team area easier using just a shortcode [tea
 
 == Description ==
 
-Add a beautiful section with your team members on your site using th WordPress Team plugin. All you have to do is add the people, take the [teammates] shortcode, and paste it anywhere you want.
+Add a beautiful section with your team members on your site using the WordPress Team plugin. All you have to do is add the people, take the [teammates] shortcode, and paste it anywhere you want.
 
 **Features**
 
