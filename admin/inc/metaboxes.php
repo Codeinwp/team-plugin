@@ -119,8 +119,9 @@
           return;
 
       // Save the data from metaboxes.
-
-      $social_meta = $_POST['social_icons'];
+	  if( !empty($_POST['social_icons']) ) {
+		  $social_meta = $_POST['social_icons'];
+	  }
 	  
 	  function teammatesSanitizeArray( $val ) {
 		  
@@ -443,20 +444,37 @@
 		  return $new_val;
 		  
 	  }
-	  
-      update_post_meta($post_id,'social_icons',array_map( 'teammatesSanitizeArray', $social_meta ));
 
-      $role_meta = sanitize_text_field( $_POST['role_text'] );
+	  if( !empty( $social_meta ) ) {
+		  update_post_meta( $post_id, 'social_icons', array_map( 'teammatesSanitizeArray', $social_meta ) );
+	  }
 
-      update_post_meta($post_id,'role_text',$role_meta);
+	  if( !empty( $_POST['role_text'] ) ) {
 
-      $group_heading_meta = sanitize_text_field( $_POST['group_heading_text'] );
+		  $role_meta = sanitize_text_field( $_POST['role_text'] );
 
-      update_post_meta($post_id,'group_heading_text',$group_heading_meta);
+		  if( !empty( $role_meta ) ) {
+			  update_post_meta( $post_id, 'role_text', $role_meta );
+		  }
+	  }
 
-      $description_meta = sanitize_text_field( $_POST['description_text'] );
+	  if( !empty($_POST['group_heading_text']) ) {
 
-      update_post_meta($post_id,'description_text',$description_meta);
+		  $group_heading_meta = sanitize_text_field( $_POST['group_heading_text'] );
+
+		  if( !empty($group_heading_meta) ) {
+			  update_post_meta( $post_id, 'group_heading_text', $group_heading_meta );
+		  }
+	  }
+
+	  if( !empty( $_POST['description_text'] ) ) {
+		  
+		  $description_meta = sanitize_text_field( $_POST['description_text'] );
+
+		  if( !empty( $description_meta ) ) {
+			  update_post_meta( $post_id, 'description_text', $description_meta );
+		  }
+	  }
   }
 
 
